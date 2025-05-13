@@ -58,7 +58,7 @@ function formatDate(dateString) {
       .then(() => {
         messageContainer.innerHTML = `<p class="success-message">✔ Saved under date: ${infoDateKey}</p>`;
         setTimeout(() => {
-          window.location.href = 'home.html';
+          window.location.href = './home';
         }, 1500); // 1.5 seconds delay
         
       })

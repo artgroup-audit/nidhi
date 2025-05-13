@@ -113,7 +113,7 @@ if (allRequiredExist) {
 
         // Show alert and then redirect
         alert("✅ Trial balance completed!");
-        window.location.href = "home.html";
+        window.location.href = "./home";
       })
       .catch((error) => {
         console.error("Error saving data: ", error);

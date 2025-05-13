@@ -28,7 +28,7 @@ function calculateTotal() {
       document.getElementById('userName').textContent = branchName;
       document.getElementById('hiddenuserName').value = branchName;
     } else {
-      window.location.href = 'index.html';
+      window.location.href = './';
     }
   });
 
@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const homeLink = document.getElementById('dynamicHomeLink');
 
   if (userId === '2') {
-      homeLink.href = 'ho&=home.html';
+      homeLink.href = './ho&=home';
   } else {
-      homeLink.href = 'home.html';
+      homeLink.href = './home';
   }
 });
 

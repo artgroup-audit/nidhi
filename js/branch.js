@@ -9,6 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (nameDisplay) nameDisplay.textContent = branchName;
       if (nameInput) nameInput.value = branchName;
     } else {
-      window.location.href = 'branchinfo.html';
+      window.location.href = './branchinfo';
     }
   });

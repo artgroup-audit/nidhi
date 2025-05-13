@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('userName').textContent = branchName;
       document.getElementById('hiddenuserName').value = branchName;
     } else {
-      window.location.href = 'index.html';
+      window.location.href = './';
     }
   });
 
