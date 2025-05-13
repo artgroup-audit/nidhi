@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/trialcopy.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Trial Balance</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chengannur Nidhi</h3>                    
+                </div>     
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn">
+                            <a id="dynamicHomeLink"><img src="image/nav/home-button.png" alt="">Home</a>
+                        </button>                    
+                    </div>
+
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+                      <div class="report-content">
+                        <div class="content_rept">
+                            <div class="title">
+                                <h2>Trial Balance</h2>
+                            </div>
+                            <div class="filter_feld">
+                                <div class="input-box">
+                                    <label for="branch">Branch</label>
+                                    <select id="brName" required></select>
+                                </div>
+                                <div class="input-box">
+                                    <label for="date">Date</label>
+                                    <input type="date" id="report_date" required>
+                                </div>
+                         
+                                <div class="input-box" id="appraisedByBox">
+                                    <label for="Auditor">Auditor</label>
+                                    <select id="Auditor" required></select>
+                                </div>
+                                
+                                <div class="btn-display">
+                                    <button class="display">Display</button>
+                                </div>  
+<div id="messageContainer"></div>
+                    
+                                <div class="btn-functions">
+                                    <button onclick="exportTable()" title="Export to excel"><img src="image/report/export.png" alt="export"></button>
+                                    <button onclick="printTable()" title="Print"><img src="image/report/print.png" alt="print"></button>
+                                    <button onclick="exportToPDF()" title="Export to PDF"><img src="image/report/pdf.png" alt="pdf"></button>
+                                </div>
+                        </div>                  
+   <div class="table-container">     
+    <table>
+        <thead>
+            <tr>
+                <th class="lf">L.F.</th>
+                <th>Particulars</th>
+                <th>Dr. Amount</th>
+                <th>Cr. Amount</th>
+            </tr>
+        </thead>
+       
+        <tbody id="trialBalanceBody">
+            <tr>
+                <td class="lf">
+                    <input id="pnllf" type="number" min="0"   false" ondrop="return false" readonly>
+                </td>
+                <td class="acc_head">Profit & Loss A/c</td>
+                <td>
+                    <input id="pnldr" type="number" ondrop="return false" readonly readonly>
+                </td>
+                <td>
+                    <input id="pnlcr" type="number" ondrop="return false" readonly readonly>
+                </td>
+            </tr>
+<tr>
+    <td colspan="4" class="acc_group">Loan & advance</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="goldloanlf"  type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Gold Loan Control A/c</td>
+    <td>
+        <input id="goldloandr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="goldloancr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="businessloanlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Business Loan control A/c</td>
+    <td>
+        <input id="businessloandr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="businessloancr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Current Assets</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="securitydepositlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Security Deposit</td>
+    <td>
+        <input id="securitydepositdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="securitydepositcr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="goldintlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Gold Loan Interest Receivable</td>
+    <td>
+        <input id="goldintdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="goldintcr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Fixed Assets</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="furnlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Furniture & Fixtures</td>
+    <td>
+        <input id="furndr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="furncr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="officelg" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Office Equipments</td>
+    <td>
+        <input id="officedr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="officecr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="eleclf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Eletrical Fittings</td>
+    <td>
+        <input id="elecdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="eleccr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="computerlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Computer</td>
+    <td>
+        <input id="computerdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="computercr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="landlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Land</td>
+    <td>
+        <input id="landdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="landcr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Cash & Equalaents</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="cashlf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Cash in Hand</td>
+    <td>
+        <input id="cashdr" type="number" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input id="cashcr" type="number" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="banklf" type="number" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Cash in Bank</td>
+        <td>
+            <input id="bankdr" type="number" ondrop="return false" readonly>
+        </td>
+        <td>
+            <input id="bankcr" type="number" ondrop="return false" readonly>
+        </td>
+    </tr>
+<tr>
+    <td colspan="4" class="acc_group">Current Liabilities</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="debtInterestPayable1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Debenture Interest Payable</td>
+    <td>
+        <input type="number" id="debtInterestPayable2" ondrop="return false" readonly>
+    </td>
+        <td>
+            <input type="number" id="debtInterestPayable3" ondrop="return false" readonly>
+        </td>
+        </tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Loan & Borrowing</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="headOfficeAccounts1" ondrop="return false" readonly>
+    </td>
+        <td class="acc_head">Head Office Accounts</td>
+        <td>
+            <input type="number" id="headOfficeAccounts2" ondrop="return false" readonly>
+        </td>
+        <td>
+            <input type="number" id="headOfficeAccounts3" ondrop="return false" readonly>
+        </td>
+        </tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Income</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="interestReceived1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Interest Received On</td>
+    <td>
+        <input type="number" id="interestReceived2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="interestReceived3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="goldLoanInterest1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Gold Loan Interest</td>
+    <td>
+        <input type="number" id="goldLoanInterest2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="goldLoanInterest3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="afc1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">AFC</td>
+    <td>
+        <input type="number" id="afc2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="afc3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="otherIncome1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Other Income</td>
+    <td>
+        <input type="number" id="otherIncome2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="otherIncome3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="bankCharges1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Bank Charges</td>
+    <td>
+        <input type="number" id="bankCharges2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="bankCharges3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="lossOfPay1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Loss Of Pay</td>
+    <td>
+        <input type="number" id="lossOfPay2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="lossOfPay3" ondrop="return false" readonly>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Expenses</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="advertisementPublicity1" ondrop="return false" readonly>
+    </td>
+        <td class="acc_head">Advertisement & Publicity</td>
+        <td>
+            <input type="number" id="advertisementPublicity2" ondrop="return false" readonly>
+        </td>
+        <td>
+            <input type="number" id="advertisementPublicity3" ondrop="return false" readonly>
+        </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="cleaningCharges1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Cleaning Charges</td>
+    <td>
+        <input type="number" id="cleaningCharges2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="cleaningCharges3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="donationCharity1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Donation & Charity</td>
+    <td>
+        <input type="number" id="donationCharity2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="donationCharity3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="electricityCharges1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Electricity Charges</td>
+    <td>
+        <input type="number" id="electricityCharges2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="electricityCharges3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="festivalAllowance1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Festival Allowance</td>
+    <td>
+        <input type="number" id="festivalAllowance2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="festivalAllowance3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="furnishingExpense1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Furnishing Expense</td>
+    <td>
+        <input type="number" id="furnishingExpense2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="furnishingExpense3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="inaugurationExpenses1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Inauguration Expenses</td>
+    <td>
+        <input type="number" id="inaugurationExpenses2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="inaugurationExpenses3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="internetSubscriptionCharges1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Internet Subscription Charges</td>
+    <td>
+        <input type="number" id="internetSubscriptionCharges2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="internetSubscriptionCharges3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="labourRegistrationRenewal1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Labour Registration Renewal</td>
+    <td>
+        <input type="number" id="labourRegistrationRenewal2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="labourRegistrationRenewal3" ondrop="return false" readonly>
+    </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="miscellaneousExpense1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Miscellaneous expense</td>
+    <td>
+        <input type="number" id="miscellaneousExpense2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="miscellaneousExpense3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="newspaperPeriodicals1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Newspaper & Periodicals</td>
+    <td>
+        <input type="number" id="newspaperPeriodicals2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="newspaperPeriodicals3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="officeExpenses1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Office expenses</td>
+    <td>
+        <input type="number" id="officeExpenses2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="officeExpenses3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="postageTelegram1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Postage & Telegram</td>
+    <td>
+        <input type="number" id="postageTelegram2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="postageTelegram3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="printingStationary1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Printing & Stationary</td>
+    <td>
+        <input type="number" id="printingStationary2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="printingStationary3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="professionalTax1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Professional Tax</td>
+    <td>
+        <input type="number" id="professionalTax2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="professionalTax3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="rebateDiscount1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Rebate & Discount</td>
+    <td>
+        <input type="number" id="rebateDiscount2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="rebateDiscount3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="rebateGoldLoan1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Rebate On Gold Loan Onetime settelement</td>
+    <td>
+        <input type="number" id="rebateGoldLoan2" ondrop="return false" readonly>
+    </td>
+        <td>
+            <input type="number" id="rebateGoldLoan3" ondrop="return false" readonly>
+        </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="renewalWeighingMachine1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Renewal of weighing Machine</td>
+    <td>
+        <input type="number" id="renewalWeighingMachine2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="renewalWeighingMachine3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="rent1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Rent</td>
+    <td>
+        <input type="number" id="rent2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="rent3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="repairsMaintenance1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Repairs & Maintenance</td>
+    <td>
+        <input type="number" id="repairsMaintenance2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="repairsMaintenance3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="salary1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Salary</td>
+    <td><input type="number" id="salary2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="salary3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="shiftingExpenses1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Shifting Expenses</td>
+    <td>
+        <input type="number" id="shiftingExpenses2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="shiftingExpenses3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="specialAllowance1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Special Allowance</td>
+    <td>
+        <input type="number" id="specialAllowance2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="specialAllowance3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="travellingExpenses1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Travelling Expenses</td>
+    <td>
+        <input type="number" id="travellingExpenses2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="travellingExpenses3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="wages1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Wages</td>
+    <td>
+        <input type="number" id="wages2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="wages3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="waterCharges1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Water Charges</td>
+    <td>
+        <input type="number" id="waterCharges2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="waterCharges3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Other Heads Below</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="esi1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">ESI</td>
+    <td>
+        <input type="number" id="esi2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="esi3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="epf1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">EPF</td>
+    <td>
+        <input type="number" id="epf2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="epf3" ondrop="return false" readonly>
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number" id="welfareFund1" ondrop="return false" readonly>
+    </td>
+    <td class="acc_head">Welfare fund</td>
+    <td>
+        <input type="number" id="welfareFund2" ondrop="return false" readonly>
+    </td>
+    <td>
+        <input type="number" id="welfareFund3" ondrop="return false" readonly>
+    </td>
+</tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total</td>
+                <td id="debitTotal"></td>
+                <td id="creditTotal"></td>
+            </tr>
+            <tr>
+                <td colspan="2">Difference</td>
+                <td id="debitDiff" colspan="2"></td>
+            </tr>
+            
+        </tfoot>
+    </table> 
+    </form>
+  </div>
+</div>
+</div></div></div>
+    
+  
+<script type="module" src="js/trialreport.js"></script> 
+<script src="js/common.js"></script>   
+<script src="js/printing.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</body>
+</html>

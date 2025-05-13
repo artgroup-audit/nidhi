@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Interest Checking</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chengannur Nidhi</h3>                    
+                </div>               
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn"><a href="home.html"><img src="image/nav/home-button.png" alt="">Home</a></button>                    
+                    </div>
+                    <div class="branch_name">
+                        <img src="/image/nav/bank.png">
+                        <p name="branch" id="branchNamehid"></p>                     
+                      <input type="hidden" name="branchName" id="hidbranchName"/>
+                    </div>
+
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="content">
+            <div class="content-2">
+                <div class="form_container">
+                    <div class="title">
+                        <h2>Interest Checking</h2> 
+                        <div id="messageContainer"></div>     
+                    </div>
+
+                    <div class="wrapper" id="data_form">
+                        <form action="#" id="interstForm">                          
+                            <div class="main_form-fields">   
+                                
+                                <div class="input-box">                    
+                                    <label for="trDate">Date</label>
+                                    <input type="date" id="trDate" required/>
+                                </div>
+
+                                <div class="input-box">                    
+                                    <label for="loanDate">Loan Date</label>
+                                    <input type="date" id="loanDate" required/>
+                                </div>
+                            
+                                <div class="input-box">
+                                    <label for="Pledge">Pledge Number</label>
+                                    <input type="number" id="pledgeNumber" placeholder="Pledge Number" autocomplete="off" required/>
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="amount">Loan Amount</label>
+                                <input type="number" placeholder="Loan Amount" id="amount"  required autocomplete="off" min="0" step="0.001">
+                                </div>
+
+                                <div class="input-box">                    
+                                    <label for="paidUp">Int.paid Up To</label>
+                                    <input type="date" id="paidUp" required/>
+                                </div>
+
+                                <div class="input-box"> 
+                                   <label for="upTo">Int.Up To</label>
+                                    <input type="date" id="upTo" required autocomplete="off">
+                                </div>
+
+                                <div class="input-box">
+                                    <label for="intRecev">Recevid Interest</label>
+                                    <input type="number" placeholder="18% or 20%" id="intRecev" required  autocomplete="off" min="0" step="0.001">
+                                </div>  
+
+                                <div class="input-box">
+                                    <label for="penal">Recevid Interest</label>
+                                    <input type="number" placeholder="Penal" id="penal" required autocomplete="off" min="0" step="0.001">
+                                </div>
+                                <div class="remark">
+                                <div class="input-box">
+                                    <label for="remark">Remarks</label>
+                                    <input type="text" placeholder="If any remarks...." id="remark"  autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="btn-save-data">                                
+                                <button type="reset" class="clear">Clear</button>
+                                <button type="submit" class="save">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>                
+                
+                <div class="report_container">
+                    <div class="title">
+                        <h2>Interest Checking Report</h2>
+                    </div>                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Advanced Date</th>
+                                    <th>Scheme</th>                                    
+                                    <th>Pledge Number</th>                                    
+                                    <th>Loan Amount</th>                                    
+                                    <th>Int.Paid Upto</th>
+                                    <th>Int.Upto </th>                                    
+                                    <th>Days</th>                                   
+                                    <th colspan="2">Interest Rate</th>
+                                    <th>Interest </th> 
+                                    <th>Penal</th>                                    
+                                    <th colspan="2">Collected Interest</th>
+                                    <th colspan="2">Defference</th> 
+                                    <th>Remarks</th>  
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="repot_bottom">
+                    <div id="report_ConutTotal"></div>
+                    </div>
+                </div>                
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/branch.js"></script>
+    <script type="module" src="js/interest.js"></script>
+</body>
+</html>

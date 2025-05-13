@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/trial.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Trial</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>hengannur Nidhi</h3>                    
+                </div>               
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn"><a href="home.html"><img src="image/nav/home-button.png" alt="">Home</a></button>                    
+                    </div>
+
+                    <div class="branch_name">
+                        <img src="/image/nav/bank.png">
+                        <p name="branch" id="branchNamehid"></p>                     
+                      <input type="hidden" name="branchName" id="hidbranchName" />
+                    </div>
+                   
+
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+    
+        <div class="content">
+            <div class="content-2">                
+                <div class="br_info_feld">
+                    <form id="trialBalance">
+                    <div class="title">                        
+                        <h2>Trial Balance</h2>   
+                        <div id="messageContainer"></div>                     
+                        <div class="form-actions">                          
+                          <button class="finish" type="submit">Finish & Save</button>
+                          <button class="save" id="saveBtn" type="button">Save</button>
+                        </div>
+                      </div>                     
+   <div class="table-container">     
+    <table>
+        <thead>
+            <tr>
+                <th class="lf">L.F.</th>
+                <th>Particulars</th>
+                <th>Dr. Amount</th>
+                <th>Cr. Amount</th>
+            </tr>
+        </thead>
+       
+        <tbody id="trialBalanceBody">
+            <tr>
+                <td class="lf">
+                    <input id="pnllf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+                </td>
+                <td class="acc_head">Profit & Loss A/c</td>
+                <td>
+                    <input id="pnldr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false" >
+                </td>
+                <td>
+                    <input id="pnlcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+                </td>
+            </tr>
+<tr>
+    <td colspan="4" class="acc_group">Loan & advance</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="goldloanlf"  type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Gold Loan Control A/c</td>
+    <td>
+        <input id="goldloandr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="goldloancr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="businessloanlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Business Loan control A/c</td>
+    <td>
+        <input id="businessloandr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="businessloancr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Current Assets</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="securitydepositlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Security Deposit</td>
+    <td>
+        <input id="securitydepositdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="securitydepositcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="goldintlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Gold Loan Interest Receivable</td>
+    <td>
+        <input id="goldintdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="goldintcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Fixed Assets</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="furnlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Furniture & Fixtures</td>
+    <td>
+        <input id="furndr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="furncr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="officelg" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Office Equipments</td>
+    <td>
+        <input id="officedr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="officecr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="eleclf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Eletrical Fittings</td>
+    <td>
+        <input id="elecdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="eleccr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="computerlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Computer</td>
+    <td>
+        <input id="computerdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="computercr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="landlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Land</td>
+    <td>
+        <input id="landdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="landcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Cash & Equalaents</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="cashlf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Cash in Hand</td>
+    <td>
+        <input id="cashdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input id="cashcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input id="banklf" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Cash in Bank</td>
+        <td>
+            <input id="bankdr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+        <td>
+            <input id="bankcr" type="number"  step = "0.01" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+    </tr>
+<tr>
+    <td colspan="4" class="acc_group">Current Liabilities</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="debtInterestPayable1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Debenture Interest Payable</td>
+    <td>
+        <input type="number"  step = "0.01" id="debtInterestPayable2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+        <td>
+            <input type="number"  step = "0.01" id="debtInterestPayable3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+        </tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Loan & Borrowing</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="headOfficeAccounts1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+        <td class="acc_head">Head Office Accounts</td>
+        <td>
+            <input type="number"  step = "0.01" id="headOfficeAccounts2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+        <td>
+            <input type="number"  step = "0.01" id="headOfficeAccounts3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+        </tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Income</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="interestReceived1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Interest Received On</td>
+    <td>
+        <input type="number"  step = "0.01" id="interestReceived2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="interestReceived3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="goldLoanInterest1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Gold Loan Interest</td>
+    <td>
+        <input type="number"  step = "0.01" id="goldLoanInterest2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="goldLoanInterest3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="afc1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">AFC</td>
+    <td>
+        <input type="number"  step = "0.01" id="afc2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="afc3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="otherIncome1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Other Income</td>
+    <td>
+        <input type="number"  step = "0.01" id="otherIncome2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="otherIncome3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="bankCharges1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Bank Charges</td>
+    <td>
+        <input type="number"  step = "0.01" id="bankCharges2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="bankCharges3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="lossOfPay1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Loss Of Pay</td>
+    <td>
+        <input type="number"  step = "0.01" id="lossOfPay2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="lossOfPay3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+
+<tr>
+    <td colspan="4" class="acc_group">Expenses</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="advertisementPublicity1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+        <td class="acc_head">Advertisement & Publicity</td>
+        <td>
+            <input type="number"  step = "0.01" id="advertisementPublicity2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+        <td>
+            <input type="number"  step = "0.01" id="advertisementPublicity3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="cleaningCharges1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Cleaning Charges</td>
+    <td>
+        <input type="number"  step = "0.01" id="cleaningCharges2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="cleaningCharges3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="donationCharity1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Donation & Charity</td>
+    <td>
+        <input type="number"  step = "0.01" id="donationCharity2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="donationCharity3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="electricityCharges1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Electricity Charges</td>
+    <td>
+        <input type="number"  step = "0.01" id="electricityCharges2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="electricityCharges3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="festivalAllowance1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Festival Allowance</td>
+    <td>
+        <input type="number"  step = "0.01" id="festivalAllowance2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="festivalAllowance3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="furnishingExpense1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Furnishing Expense</td>
+    <td>
+        <input type="number"  step = "0.01" id="furnishingExpense2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="furnishingExpense3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="inaugurationExpenses1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Inauguration Expenses</td>
+    <td>
+        <input type="number"  step = "0.01" id="inaugurationExpenses2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="inaugurationExpenses3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="internetSubscriptionCharges1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Internet Subscription Charges</td>
+    <td>
+        <input type="number"  step = "0.01" id="internetSubscriptionCharges2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="internetSubscriptionCharges3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="labourRegistrationRenewal1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Labour Registration Renewal</td>
+    <td>
+        <input type="number"  step = "0.01" id="labourRegistrationRenewal2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="labourRegistrationRenewal3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="miscellaneousExpense1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Miscellaneous expense</td>
+    <td>
+        <input type="number"  step = "0.01" id="miscellaneousExpense2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="miscellaneousExpense3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="newspaperPeriodicals1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Newspaper & Periodicals</td>
+    <td>
+        <input type="number"  step = "0.01" id="newspaperPeriodicals2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="newspaperPeriodicals3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="officeExpenses1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Office expenses</td>
+    <td>
+        <input type="number"  step = "0.01" id="officeExpenses2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="officeExpenses3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="postageTelegram1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Postage & Telegram</td>
+    <td>
+        <input type="number"  step = "0.01" id="postageTelegram2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="postageTelegram3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="printingStationary1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Printing & Stationary</td>
+    <td>
+        <input type="number"  step = "0.01" id="printingStationary2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="printingStationary3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="professionalTax1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Professional Tax</td>
+    <td>
+        <input type="number"  step = "0.01" id="professionalTax2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="professionalTax3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="rebateDiscount1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Rebate & Discount</td>
+    <td>
+        <input type="number"  step = "0.01" id="rebateDiscount2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="rebateDiscount3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="rebateGoldLoan1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Rebate On Gold Loan Onetime settelement</td>
+    <td>
+        <input type="number"  step = "0.01" id="rebateGoldLoan2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+        <td>
+            <input type="number"  step = "0.01" id="rebateGoldLoan3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+        </td>
+    </tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="renewalWeighingMachine1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Renewal of weighing Machine</td>
+    <td>
+        <input type="number"  step = "0.01" id="renewalWeighingMachine2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="renewalWeighingMachine3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="rent1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Rent</td>
+    <td>
+        <input type="number"  step = "0.01" id="rent2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="rent3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="repairsMaintenance1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Repairs & Maintenance</td>
+    <td>
+        <input type="number"  step = "0.01" id="repairsMaintenance2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="repairsMaintenance3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="salary1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Salary</td>
+    <td><input type="number"  step = "0.01" id="salary2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="salary3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="shiftingExpenses1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Shifting Expenses</td>
+    <td>
+        <input type="number"  step = "0.01" id="shiftingExpenses2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="shiftingExpenses3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="specialAllowance1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Special Allowance</td>
+    <td>
+        <input type="number"  step = "0.01" id="specialAllowance2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="specialAllowance3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="travellingExpenses1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Travelling Expenses</td>
+    <td>
+        <input type="number"  step = "0.01" id="travellingExpenses2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="travellingExpenses3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="wages1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Wages</td>
+    <td>
+        <input type="number"  step = "0.01" id="wages2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="wages3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="waterCharges1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Water Charges</td>
+    <td>
+        <input type="number"  step = "0.01" id="waterCharges2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="waterCharges3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="acc_group">Other Heads Below</td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="esi1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">ESI</td>
+    <td>
+        <input type="number"  step = "0.01" id="esi2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="esi3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="epf1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">EPF</td>
+    <td>
+        <input type="number"  step = "0.01" id="epf2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="epf3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+<tr>
+    <td class="lf">
+        <input type="number"  step = "0.01" id="welfareFund1" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td class="acc_head">Welfare fund</td>
+    <td>
+        <input type="number"  step = "0.01" id="welfareFund2" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+    <td>
+        <input type="number"  step = "0.01" id="welfareFund3" min="0" oninput="calculateTotal()" onpaste="return false" ondrop="return false">
+    </td>
+</tr>
+
+        </tbody>
+        <tfoot>
+            <tr style="font-weight: bold;">
+                <td colspan="2">Total</td>
+                <td id="debitTotal"></td>
+                <td id="creditTotal"></td>
+            </tr>
+            <tr style="font-weight: bold; background-color: #f8f9fa;">
+                <td colspan="2">Difference</td>
+                <td id="debitDiff" colspan="2"></td>
+            </tr>
+            
+        </tfoot>
+    </table> 
+    </form>
+  </div>
+</div>
+</div></div></div>
+    
+   
+        
+<script type="module" src="js/trial.js"></script> 
+<script src="js/common.js"></script>   
+<script src="js/branch.js"></script>
+</body>
+</html>

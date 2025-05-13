@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9e8d365;
+  }
+  .container {
+    display: flex;
+    width: 670px;
+    height: 460px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  .login-left {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-left h2 {
+    margin-bottom: 2px;
+    color: #333;
+  }
+
+  .login-left p {
+    margin-bottom: 35px;
+    font-size: 14px;
+    color: #666;
+  }
+  .login-left input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 14px;
+  }
+  .login-left button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background-color: #606061;
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .login-left button:hover {
+    background-color: #000308c5;
+    font-weight: 600;
+  }
+  .login-right {
+    flex: 1;
+    background: linear-gradient(#cccccf ,#00000094);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .login-right p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+  .login-right img{
+    width: 110px;
+    height: 110px;
+  }
+  #loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.loaderBox {
+    text-align: center;
+    font-family: sans-serif;
+}
+.loaderBox img {
+    width: 59px;
+    height: 59px;
+    margin-bottom: 16px;
+}
+#loadingMessage {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 16px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+.progress-bar {
+    width: 200px;
+    height: 10px;
+    background-color: #fffbfb;
+    border-radius: 10px;
+    border: 1px rgb(80, 80, 80) solid;
+    overflow: hidden;
+    margin: auto;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #000000;
+    transition: width 1s ease;
+}
+.animate-icon {
+    animation: pulseIcon 0.6s ease-in-out;
+}
+
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

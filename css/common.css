@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: #e9e8d365;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.container {
+    width: 100%;
+    min-height: 100vh;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 3px 5px rgba(2, 63, 121, 0.384);
+    z-index: 100;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.status_head h3 {
+    font-weight: 600;
+    color: #222;
+}
+.right_info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.home_btn button {
+    padding: 8px 15px;    
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    background: none;    
+}
+.home_btn button a {
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;   
+}
+.home_btn button:hover {
+    transform: scale(1.05);
+    font-size: 13px;
+    
+}
+.branch_name {  
+    display: flex;  
+    align-items: center;
+    gap: 1px;
+    text-transform: capitalize;    
+    font-weight: 600;
+    color: #222;
+    font-size: 14px;
+}
+.branch_name p{    
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+.user_info {
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    color: #222;
+    font-size: 14px;
+}
+.user_info img,
+.home_btn img,
+.branch_name img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.filter_feld {
+    position: sticky;
+    top: 0;
+    z-index: 100;   
+    padding: 10px 0;   
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.filter_feld.input-box {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.input-box label {
+    font-size: 14px;
+    font-weight: 600;
+}
+.filter_feld .input-box input,
+.filter_feld .input-box select {
+    width: 160px;
+    height: 31px;
+    border: 1px solid #5a5a5a;
+    background-color: #eeeeee63;
+    border-radius: 5px;
+    font-size: 12px;
+    padding-left: 5px; 
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.filter_feld .input-box option{
+    font-size: 13px;
+}
+.btn-display {
+    margin-left: 0;
+}
+.btn-display .display {
+    padding: 5px 9px;
+    font-size: 12px;
+    color: white;
+    background: #606061;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-display .display:hover {
+    background: rgb(1, 7, 36);
+}
+.btn-functions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;    
+}
+.btn-functions button {
+    display: flex;
+    padding: 3px 8px;
+    font-size: 13px;
+    background: #8a8b8b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-functions button img{
+    width: 20px;
+    height: 20px;
+}
+.btn-functions button:hover {
+    transform: scale(1.1) ;
+}

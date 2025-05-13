@@ -1,0 +1,129 @@
+.report-content {
+    position: relative;   
+    height: 89vh;
+    width: 98%;
+    margin-left: 14px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
+}
+.report-content .content_rept{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding-top: 10px;
+}
+.report_table-container {
+    overflow-x: auto;
+    max-width: 100%;
+}.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 2px solid #999;
+}
+.title h2 {
+    font-size: 15px;    
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: center;
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+    border-right:1px solid #c0bfbf;
+}
+th {
+    font-size: 11px;
+    background: #4a4a4b;
+    color: white;
+}
+td {
+    font-size: 12px;
+    
+}
+tbody tr:nth-child(even) {
+    background: #f3f3f3a6;
+}
+td {
+    font-size: 11px;
+}
+.content_rept .title h2 {
+    position: sticky;    
+    background: white;
+    padding: 1px ;
+    z-index: 0;
+    text-align: center;    
+}
+.report_table-container {
+    overflow-y: auto;
+    max-height: 67vh;
+}
+.report_table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.report_table-container thead {
+    position: sticky;
+    top: 0px;
+    background: white;
+    z-index: 0;
+}
+.report_table-container tbody tr:nth-child(even) {
+    background: #47557434;
+}
+.report_table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.report_table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.report_table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+.green-text {
+    color: green;
+    font-weight: bold;
+}
+.repot_bottom{
+    display: flex;
+    align-items: center;
+    gap:15px;   
+    padding: 1px;   
+}
+.repot_bottom p{
+    color: #020000;
+    font-size: 13px;   
+    font-weight: 500; 
+    align-items: center;
+}
+.repot_bottom p span{
+    color: #020000;
+    font-size: 15px;
+    font-weight: 600;
+    align-items: center;
+}
+
+/*for printing..*/
+@media print {
+    .no-print {
+        display: none;
+    }
+}

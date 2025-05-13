@@ -1,0 +1,251 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: center;
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+    border-right:1px solid #c0bfbf;
+}
+th {
+    font-size: 11px;
+    background: #4a4a4b;
+    color: white;
+}
+td {
+    font-size: 11px;
+}
+::placeholder{
+    text-transform: capitalize;
+    font-size: 11px;
+    color: #00000093;
+}
+.content {
+    position: fixed;
+    margin-top: 7vh;    
+}
+.content .content-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+ .content .content-2 .form_container {
+    flex: 1;
+    min-height: 90vh;
+    background: white;
+    margin: 7px;
+    padding: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+.report_container {
+    flex: 3;
+    min-height: 90vh;
+    background: white;
+    margin: 7px;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+.report_container .title h2 {
+    position: sticky;    
+    background: white;
+    padding: 1px ;
+    z-index: 2;
+    text-align: center;    
+}
+.table-container {
+    overflow-y: auto;
+    max-height: 75vh;
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-container thead {
+    position: sticky;
+    top: 0px;
+}
+.table-container thead th {
+    background: #4a4a4b;
+    color: white;
+    z-index: 1;
+}
+
+.table-container tbody tr:nth-child(even) {
+    background: #8398be2f;
+}
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 2px solid #999;
+}
+.title h2 {
+    font-size: 14px;    
+}
+.form-fields, 
+.main_form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px;
+}
+.main_form-fields{
+    padding-top: 6px;
+}
+.main_form-fields .input-box {
+    width: 47%;   
+}
+.content label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 0px;
+}
+.input-box input,
+.input-box p{
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    background: #e9e8e8;
+    color: #333;
+}
+.input-box p{
+    font-weight: 600;
+    font-size: 13px;
+    min-height: 35px;
+}
+.remark input{
+    width: 400%;
+    height: 100px;
+}
+.checkbox-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.checkbox-box input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #0879ad; /* modern browsers support */
+    cursor: pointer;
+}
+
+.btn-save-data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 152px;
+}
+.btn-save-data button  { 
+    color: white;
+    border-radius: 2px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.btn-save-data .save{
+    padding: 7px 30px;
+    background-color: #0879ad;
+}
+.btn-save-data .clear {
+    padding: 8px 9px;
+    background-color: #a70808;
+}
+.btn-save-data .save:hover {
+    transform: scale(1.1)
+}
+.btn-save-data .clear:hover,
+.edit_btn:hover {
+    transform: scale(1.1)
+}
+#messageContainer .success-message{
+    background-color: rgba(0, 128, 0, 0.192);
+    color: rgb(6, 100, 2);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 1px 20px;
+    border-radius: 6%;
+}
+#messageContainer .error-message{
+    background-color: rgba(128, 0, 0, 0.192);
+    color: rgb(201, 5, 5);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 1px 20px;
+    border-radius: 6%;
+}
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+.green-text {
+    color: green;
+    font-weight: bold;
+}
+.repot_bottom{
+    display: flex;
+    align-items: center;
+    gap:15px;   
+    padding: 3px;
+    margin: 3px;    
+}
+.repot_bottom p{
+    color: #000000;
+    font-size: 12px;   
+    font-weight: 400; 
+    align-items: center;
+}
+.repot_bottom p span{
+    color: #460303;
+    font-size: 14px;
+    font-weight: 600;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .main_form-fields .input-box {
+        width: 100%;
+    }
+
+    .remark input {
+        height: 60px;
+        
+    }
+
+    .btn-save-data {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .btn-save-data .save,
+    .btn-save-data .clear {
+        width: 100%;
+    }
+}

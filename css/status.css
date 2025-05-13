@@ -1,0 +1,159 @@
+.content {
+    padding-top: 29px;
+    width: 100%;
+}
+
+.content-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.br_info_feld, .br_status_feld, .cash_feld {
+    background: #fff;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    height: 530px;
+}
+.br_info_feld {
+    flex: 1 1 300px;    
+    width: 400px;
+}
+.br_status_feld {
+    flex: 1 1 300px;
+}
+.cash_feld {
+    flex: 1 1 300px;
+}
+.title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #807e7e;
+}
+.title h2 {
+    font-size: 15px;
+    color: #2c3e50;
+    margin: 0;
+}
+.form-fields, .status_fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.input-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 210px;
+    margin-bottom: 0px;
+}
+.info_fields_staff .input-box{
+    gap: 10px;
+}
+.input-box label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+.input-box input,
+.input-box p,
+.input-box select {
+    padding: 9px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+.input-box input:focus,
+.input-box select:focus {
+    border-color: #007bff;
+}
+
+/* Hidden Text Inputs */
+input[type="hidden"] {
+    display: none;
+}
+.form-display {
+    font-size: 14px;
+    padding: 5px 0;
+    color: #555;
+}
+
+/* Staff Info Container */
+.info_fields_staff {
+    flex: 1 1 100%;
+}
+
+/* Table Styling for Denominations */
+.cash_feld table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.cash_feld td {
+    padding: 5px;
+    vertical-align: middle;
+}
+.cash_feld td:first-child {
+    width: 100px;
+    font-weight: 600;
+}
+.cash_feld input[type="number"] {
+    width: 99%;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Button Container */
+.btn-save-data {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+.remark input{
+    width: 206%;
+    height: 100px;
+}
+
+/* Buttons */
+button.clear,
+button.save {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button.clear {
+    background-color: #f44336;
+    color: #fff;
+}
+button.save {
+    background-color: #4caf50;
+    color: #fff;
+}
+button.clear:hover {
+    background-color: #d32f2f;
+}
+button.save:hover {
+    background-color: #388e3c;
+}
+
+
+@media (max-width: 768px) {
+    .input-box {
+        flex: 1 1 100%;
+    }
+    .btn-save-data {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

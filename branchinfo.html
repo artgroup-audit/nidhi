@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="stylesheet" href="css/status.css">
+    <link rel="stylesheet" href="css/common.css">   
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Branch Status</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chengannur Nidhi</h3>                    
+                </div>
+                <div class="right_info">
+
+                    <div class="home_btn">           
+                        <button class="home_btn"><a href="home.html"><img src="image/nav/home-button.png" alt="">Home</a></button>                    
+                    </div>
+
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="content">
+        <div class="content-2">
+            <div class="wrapper" id="data_form">
+                    <form action="#" id="branch_mainForm">
+            <div class="br_info_feld">
+                <div class="title">
+                    <h2>Branch Info</h2>                     
+                </div>                
+                <div id="messageContainer"></div>   
+                    <div class="form-fields">
+                        <!-- Date Field -->
+                        <div class="input-box">                                                         
+                            <label for="date">Date</label>      
+                            <p id="mainDate" class="form-display"></p>
+                            <input type="hidden" name="mainDate" id="info_date" />
+                        </div>
+                
+                        <!-- Branch Field -->
+                        <div class="input-box">
+                            <label for="brName">Branch</label>
+                            <select id="brName" required ></select>
+                        </div> 
+                
+                        <!-- Staff Name Fields -->
+                        <div class="info_fields_staff">
+                            <div class="input-box">
+                                <label for="staff-name">Staff Name</label> 
+                                <input type="text" name="brmgr" id="brmgr" placeholder="Branch manager" required autocomplete="off" />
+                                <input type="text" name="stff1" id="stff1" placeholder="Account Clerk" required autocomplete="off"/>
+                                <input type="text" name="stff2" id="stff2" placeholder="Account Clerk" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="br_status_feld">
+                <div class="title">
+                    <h2>Branch Status</h2>
+                </div>
+                <div class="status_fields">
+        
+                    <div class="input-box">
+                        <label for="staffregister">Staff register</label>
+                        <select id="staff_reg" name="staffregister" required>
+                            <option value="" disabled selected>Check register</option>
+                            <option value="Complete">Complete</option>
+                            <option value="Incomplete">Incomplete</option>
+                        </select>                                            
+                    </div>
+
+                    <div class="input-box">
+                        <label for="gl_os">Gold Outstanding</label>
+                        <input type="number" id="gl_os" name="gl_os" placeholder="Gold loan Outstanding" required autocomplete="off">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="gl_stock">Stock</label>
+                        <input type="number" id="gl_stock" name="gl_stock" placeholder="Stock As per Register" required autocomplete="off">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="cash">Cash</label>
+                        <input type="number" id="info_cash" name="cash" placeholder="As per ledger" required autocomplete="off">
+                    </div>
+                    <div class="remark">
+                        <div class="input-box">
+                            <label for="info_remark">Remarks</label>
+                            <input type="text" placeholder="If any remarks...." id="info_remark"  autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cash_feld">
+                <div class="title">
+                    <h2>Cash Denomination</h2>
+                </div>
+                
+                <div class="input-box">                    
+                    <table>
+                        <tbody >
+                            <tr>
+                                <td>2000 &nbsp;X</td>
+                                <td><input type="number" class="count" data-value="2000" id="2000_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>500 &nbsp; &nbsp; X</td>
+                                <td><input type="number" class="count" data-value="500" id="500_count" required></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>200 &nbsp; &nbsp;&nbsp; X</td>
+                                <td><input type="number" class="count" data-value="200" id="200_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>100 &nbsp; &nbsp;X</td>
+                                <td><input type="number" class="count" data-value="100" id="100_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>50 &nbsp; &nbsp;X</td>
+                                <td><input type="number" class="count" data-value="50" id="50_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>20 &nbsp; &nbsp;X</td>
+                                <td><input type="number" class="count" data-value="20" id="20_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>10 &nbsp; &nbsp;X</td>
+                                <td><input type="number" class="count" data-value="10" id="10_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>Coin </td>
+                                <td><input type="number" class="count" data-value="1" id="coin_count"></td>
+                                <td><input type="number" class="amount" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total</td>
+                                <td style="width: 170px;"><input type="number" id="cash_total" readonly required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btn-save-data">                                
+                        <button type="reset" class="clear">Clear</button>
+                        <button type="submit" class="save">Next</button>
+                    </div>
+                </form>
+                </div>
+            </div> 
+            
+        </div>
+    </div>
+</div>
+
+
+<script type="module" src="js/brinfo.js"></script>
+</body>
+</html>

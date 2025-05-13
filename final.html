@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/status.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Final Audit report</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chengannur Nidhi</h3>                    
+                </div>               
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn"><a href="home.html"><img src="image/nav/home-button.png" alt="">Home</a></button>                    
+                    </div>
+                    <div class="branch_name">
+                        <img src="/image/nav/bank.png">
+                        <p name="branch" id="branchNamehid"></p>                     
+                     
+                    </div>
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="content">
+            <div class="content-2">
+                <div class="wrapper" id="data_form">
+                        <form action="#" id="branch_mainForm">
+                <div class="br_info_feld">
+                    <div class="title">
+                        <h2>Info</h2>                     
+                    </div>                
+                    <div id="messageContainer"></div>   
+                        <div class="form-fields">
+                            <!-- Date Field -->
+                            <div class="input-box">                                                         
+                                <label for="date">Date</label>      
+                                <p type="date" id="mainDate" class="form-display" ></p>
+                            </div>
+                    
+                            <!-- Branch Field -->
+                            <div class="input-box">
+                                <label for="brName">Branch</label>
+                                <input type="text" name="branchName" id="hidbranchName" readonly/>
+                            </div> 
+                    
+                           
+                        </div>
+                        <div class="btn-save-data">                                
+                            <button type="reset" class="clear">Clear</button>
+                            <button type="submit" class="save">Save</button>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="br_status_feld">
+                    <div class="title">
+                        <h2>Check List</h2>
+                    </div>
+                    <div class="status_fields">            
+                        <div class="input-box">
+                            <label for="cash_book">Cash Book</label>
+                            <select id="cash_book" name="cashbook" required>
+                                <option value="" disabled selected>Check Cash Book</option>
+                                <option value="Complete">Complete</option>
+                                <option value="Incomplete">Incomplete</option>
+                            </select>                                            
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="book_ledger">Ledger</label>
+                            <select id="book_ledger" name="bookledger" required>
+                                <option value="" disabled selected>Check Ledger</option>
+                                <option value="Complete">Complete</option>
+                                <option value="Incomplete">Incomplete</option>
+                            </select>
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="reg_stock">Stock Register</label>
+                            <select id="reg_stock" name="stockreg" required >
+                                <option value="" disabled selected>Check stock register</option>
+                                <option value="Complete">Complete</option>
+                                <option value="Incomplete">Incomplete</option>
+                            </select>
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="pledge_reg">Pledge Register</label>
+                            <select id="pledge_reg" name="pledgereg" required>
+                                <option value="" disabled selected>Check Pledge register</option>
+                                <option value="Complete">Complete</option>
+                                <option value="Incomplete">Incomplete</option>
+                            </select>
+                        </div>
+                        <div class="remark">
+                            <div class="input-box">
+                                <label for="check_list_remark">Remarks</label>
+                                <input type="text" placeholder="If any remarks...." id="check_list_remark"  autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cash_feld">
+                    <div class="title">
+                        <h2>Accounts Maintenance</h2>
+                    </div>                    
+                    <div class="status_fields">     
+                        <div class="input-box">
+                            <label for="trial_tal">Trial balance tallied</label>
+                            <select id="trial_tal" name="tallied" required>
+                                <option value="" disabled selected>Select option</option>
+                                <option value="Complete">Yes</option>
+                                <option value="Incomplete">No</option>
+                            </select>                                            
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="trial_vrfy_lgr">Trial Balance verified with Ledger Balance</label>
+                            <select id="trial_vrfy_lgr" name="trialvrfy" required>
+                                <option value="" disabled selected>Select option</option>
+                                <option value="Complete">Yes</option>
+                                <option value="Incomplete">No</option>
+                            </select>
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="recpt_pay">Receipt and Payments accounts tallied</label>
+                            <select id="recpt_pay" name="ReceiptPayment" required>
+                                <option value="" disabled selected>Select option</option>
+                                <option value="Complete">Yes</option>
+                                <option value="Incomplete">No</option>
+                            </select>
+                        </div>
+    
+                        <div class="input-box">
+                            <label for="ldger_vrfy">General Ledger posting and totaling verified</label>
+                            <select id="ldger_vrfy" name="ldgrposting" required>
+                                <option value="" disabled selected>Select option</option>
+                                <option value="Complete">Yes</option>
+                                <option value="Incomplete">No</option>
+                            </select>
+                        </div>
+                        <div class="remark">
+                            <div class="input-box">
+                                <label for="accounts_remark">Remarks</label>
+                                <input type="text" placeholder="If any remarks...." id="accounts_remark"  autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div> 
+                </form>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/branch.js"></script>
+    <script type="module" src="js/final.js"></script>
+</body>
+</html>

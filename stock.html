@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Interest Checking</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chenagnnur Nidhi</h3>                    
+                </div>               
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn"><a href="home.html"><img src="image/nav/home-button.png" alt="">Home</a></button>                    
+                    </div>
+                    <div class="branch_name">
+                        <img src="/image/nav/bank.png">
+                        <p name="branch" id="branchNamehid"></p>                     
+                      <input type="hidden" name="branchName" id="hidbranchName" />
+                    </div>
+                    <div class="user_info">
+                        <img src="/image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="content">
+            <div class="content-2">
+                <div class="form_container">
+                    <div class="title">
+                        <h2>Stock Verification</h2> 
+                        <div id="messageContainer"></div>     
+                    </div>
+
+                    <div class="wrapper" id="data_form">
+                        <form action="#" id="stockForm">                          
+                            <div class="main_form-fields">                      
+                            <div class="input-box">                                                            
+                                <label for="date">Loan Date</label>
+                                <input type="date"  id="loanDate"  required />
+                            </div> 
+                                <div class="input-box">
+                                    <label for="pledgeNumber">Pledge Number</label>
+                                    <input type="number"  id="pledgeNumber" placeholder="Pledge Number" required  autocomplete="off"/>
+                                </div>
+
+                                <div class="input-box">                    
+                                    <label for="cust_name">Name</label>
+                                    <input type="text" id="cust_name" placeholder="customer Name" required autocomplete="off" style="text-transform: capitalize;"/>
+                                </div>
+
+                                <div class="input-box">                    
+                                    <label for="gl_weight">Gold Weight</label>
+                                    <input type="number" id="gl_weight" step="0.001" placeholder="Gold Weight" required autocomplete="off"/>
+                                </div>
+                                <div class="input-box">                                                                           
+                                   <label for="amount">Amount</label>
+                                    <input type="number" placeholder="Loan Amount" id="amount" required autocomplete="off">
+                                </div>
+                            <!--   
+                                <div class="input-box">
+                                    <label for="gl_pkt_wt">Gold Packet Weight</label>
+                                     <input type="number" placeholder="Gold Packet Weight " id="gl_pkt_wt" step="0.001" required autocomplete="off">
+                                 </div>
+                            -->    
+                                <div class="input-box checkbox-box">
+                                    <label for="appraised">Not-Appraised</label>
+                                    <input type="checkbox" id="appraised">
+                                </div>
+
+                                <div class="remark">
+                                <div class="input-box">
+                                    <label for="stock_remark">Remarks</label>
+                                    <input type="text" placeholder="If any remarks...." id="stock_remark"  autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="btn-save-data">                                
+                                <button type="reset" class="clear">Clear</button>
+                                <button type="submit" class="save">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+                
+                
+                <div class="report_container">
+                    <div class="title">
+                        <h2>Gold Verification Report</h2>
+                    </div>                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Loan Date</th>
+                                    <th>Scheme</th>                                    
+                                    <th>Pledge Number</th>
+                                    <th>Name</th>
+                                    <th>Gold Weight</th>
+                                    <th>Amount</th> 
+                                    <th>Appraised Status</th>                                   
+                                    <th>Remarks</th>                              
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">                               
+                            </tbody>                            
+                        </table> 
+                    </div>  
+                    <div class="repot_bottom">
+                        <div id="report_ConutTotal"></div> 
+                        <div id="report-totalAmount"></div>  
+                        <div id="stock_register"></div>                         
+                        <div id="ledger"></div>   
+                    </div>                        
+                </div>             
+        </div>
+    </div>  
+    
+    <script type="module" src="js/stock.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/branch.js"></script>
+</body>
+</html>
