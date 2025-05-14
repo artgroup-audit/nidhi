@@ -1,13 +1,54 @@
 [
-   
-    { "username": "j", "password": "j", "branch": "Jacob", "id": "1" },
-     { "username": "n", "password": "n", "branch": "Navaneeth", "id": "1" },
-      { "username": "kiran", "password": "kiran$%823", "branch": "Kiran", "id": "1" },
-       { "username": "b", "password": "b", "branch": "Bhanuprakash", "id": "1" },
-       { "username": "a", "password": "a", "branch": "sujith", "id": "1" },
+
+{ 
+    "username":"j",
+    "password":"j",
+    "branch":"Jacob",
+    "id":"1"
+},
+
+{
+    "username":"n",
+    "password":"n",
+    "branch":"Navaneeth",
+    "id":"1"
+},
+
+{
+    "username":"kiran",
+    "password":"kiran#2024",
+    "branch":"Kiran",
+    "id":"1"
+},
+
+{
+    "username":"b",
+    "password":"b",
+    "branch":"Bhanuprakash",
+    "id":"1"
+},
+
+{
+    "username":"admin",
+    "password":"admin",
+    "branch":"sujith",
+    "id":"1"
+},
 
 
-   
-    { "username": "s", "password": "s", "branch": "sujith", "id": "2" }, 
-    { "username": "n", "password": "n", "branch": "nisha", "id": "2" }
+
+{
+    "username":"s",
+    "password":"s",
+    "branch":"sujith",
+    "id":"2"
+},
+
+{
+    "username":"nisha",
+    "password":"nisha1983",
+    "branch":"nisha",
+    "id":"2"
+}
+
 ]
