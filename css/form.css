@@ -150,8 +150,12 @@ td {
 .checkbox-box input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    accent-color: #0879ad; /* modern browsers support */
+    accent-color: #0879ad; 
     cursor: pointer;
+}
+.save_btn{
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .btn-save-data {
@@ -168,6 +172,20 @@ td {
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
+}
+.title .finish{
+     color: white;
+    border-radius: 2px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background-color: rgb(2, 107, 2);
+    padding: 4px 10px;
+}
+.title .finish:hover{
+   transform: scale(1.1)
 }
 .btn-save-data .save{
     padding: 7px 30px;
@@ -193,6 +211,14 @@ td {
     border-radius: 6%;
 }
 #messageContainer .error-message{
+    background-color: rgba(128, 0, 0, 0.192);
+    color: rgb(201, 5, 5);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 1px 20px;
+    border-radius: 6%;
+}
+#messageContainer .info-message{
     background-color: rgba(128, 0, 0, 0.192);
     color: rgb(201, 5, 5);
     font-size: 15px;
@@ -227,6 +253,8 @@ td {
     font-weight: 600;
     align-items: center;
 }
+
+
 
 @media screen and (max-width: 768px) {
     .main_form-fields .input-box {
