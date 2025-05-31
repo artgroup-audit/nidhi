@@ -1,5 +1,5 @@
-//db
-import { database, ref, push, onValue, update } from "./firebaseConfig.js";
+// db
+import { database, ref,  onValue, update } from "./firebaseConfig.js";
 
 // Date format helper
 function formatDate(dateString) {
@@ -9,7 +9,7 @@ function formatDate(dateString) {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return `${month}/${day}/${year}`;
 }
 
 // Get elements
@@ -20,126 +20,141 @@ const reportCount = document.getElementById("report_ConutTotal");
 const reportAmount = document.getElementById("report-totalAmount");
 const reg_count = document.getElementById("stock_register");
 const reg_amount = document.getElementById("ledger");
-const entryDatePicker = document.getElementById("entryDatePicker");
+const entryDatePicker = document.getElementById("entryDate");
 const markCompleteBtn = document.getElementById("markCompleteBtn");
+const reportverify = document.getElementById("report_verify")
+const notAppraised = document.getElementById("notppraise")
+
+const save_btn = document.getElementById("save_btn");
 
 const elements = {};
-["pledgeNumber", "cust_name", "gl_weight", "amount", "appraised", "stock_remark", "loanDate"]
+["pledgeNumber", "cust_name", "status", "amount", "appraised", "stock_remark", "loanDate"]
     .forEach(id => elements[id] = document.getElementById(id));
 
 const auditornme = localStorage.getItem('userName');
 const branchName = localStorage.getItem('brName');
 
-// Set today's date as default in date picker
-const today = new Date().toISOString().split("T")[0];
-entryDatePicker.value = today;
-
-// Function to check if selected date is completed
+// Check if date entry is completed
 function checkDayCompleted(dateKey) {
+    console.log("Loading data for date:", dateKey);
     const infoRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
     onValue(infoRef, snapshot => {
-        if (snapshot.exists() && snapshot.val().completed === true) {
-            messageContainer.innerHTML = `<p class="info-message">completed.</p>`;
+        const isCompleted = snapshot.exists() && snapshot.val().completed === true;
+
+        if (isCompleted) {
+            messageContainer.innerHTML = `<p class="info-message">Completed.</p>`;
             stockForminput.querySelector("button[type='submit']").disabled = true;
-            save_btn.classList.add("save_btn");
+           if (save_btn) save_btn.classList.add("save_btn");
+           
         } else {
             messageContainer.innerHTML = "";
             stockForminput.querySelector("button[type='submit']").disabled = false;
-            save_btn.classList.remove("save_btn");
+           if (save_btn) save_btn.classList.remove("save_btn");
         }
-        // Continue to load data
-        loadStockData(dateKey);
+
+        loadStockData(dateKey); // Load stock after check
     }, { onlyOnce: true });
 }
-// Load data for selected date
+
+// Load stock data
 function loadStockData(dateKey) {
     const stockRef = ref(database, `${auditornme}/${branchName}/stock/${dateKey}`);
     onValue(stockRef, function(snapshot) {
         tableReport.innerHTML = "";
-        let totalAmount = 0;
+        
+        let inStockCount = 0;
+        let closedCount = 0;
+        let forwardedCount = 0;
+        let notAppraisedCount = 0;
 
         if (snapshot.exists()) {
             const userArray = Object.entries(snapshot.val());
+
             userArray.forEach(([id, currentUserValue]) => {
                 const scheme = getScheme(currentUserValue.loanDate);
-                const amt = parseFloat(currentUserValue.amount);
-                if (!isNaN(amt)) totalAmount += amt;
-                tableReport.innerHTML += `
+
+                // Count based on status
+                const status = currentUserValue.status ? currentUserValue.status.trim() : "";
+                if (status === "In Stock") inStockCount++;
+                else if (status === "Closed") closedCount++;
+                else if (status === "Forwarded to HO") forwardedCount++;
+
+                const appraised = currentUserValue.appraised ? currentUserValue.appraised.trim() : "";
+                if (appraised === "Not Appraised") notAppraisedCount++;
+
+                tableReport.innerHTML += `                
                     <tr>
+                        <td style="width:10px;" ><button class="edit_btn1" data-id="${id}" data-date="${currentUserValue.loanDate}">←</button></td>
+                        <td style="font-weight:600;">${currentUserValue.pledgeNumber || "-"}</td>  
                         <td>${formatDate(currentUserValue.loanDate)}</td>
-                        <td>${scheme}</td>
-                        <td class="edit_btn1" data-id="${id}">${currentUserValue.pledgeNumber || "-"}</td>                    
+                        <td>${scheme}</td>                                          
                         <td>${currentUserValue.cust_name || "-"}</td>
                         <td>${currentUserValue.gl_weight || "-"}</td>
-                        <td>${currentUserValue.amount || "-"}</td>                   
+                        <td>${currentUserValue.amount || "-"}</td>  
+                        <td>${currentUserValue.status || "-"}</td>                  
                         <td>${currentUserValue.appraised || "-"}</td>
                         <td>${currentUserValue.stock_remark || "-"}</td>                    
                     </tr>
                 `;
             });
-            reportCount.innerHTML = `<p>Verified Stock:<span> ${userArray.length}</span></p>`;
-            reportAmount.innerHTML = `<p>Verified Amount:<span> ₹${totalAmount.toLocaleString()}</span></p>`;
+            const filteredArray = userArray.filter(([_, val]) => val.status && val.status.trim() !== ""); //total checkrd count
+
+            reportverify.innerHTML = `<p>Verified Stock:<span> ${filteredArray.length}</span></p>`;
+            reportCount.innerHTML = `<p>stock:<span> ${userArray.length}</span></p>`;
+
+            reportAmount.innerHTML = `<p>In Stock: <span>${inStockCount}</span></p>`;
+            reg_count.innerHTML = `<p>Closed: <span>${closedCount}</span></p>`;
+            reg_amount.innerHTML = `<p>Forwarded to HO: <span>${forwardedCount}</span></p>`;
+            notAppraised.innerHTML = `<p>Not-Appraised: <span>${notAppraisedCount}</span></p>`;
+
+// stock edit-----
             document.querySelectorAll(".edit_btn1").forEach(button => {
-                button.addEventListener("dblclick", function () {
+                button.addEventListener("click", function () {
                     const recordId = this.getAttribute("data-id");
+                    
                     const currentData = userArray.find(([key]) => key === recordId)?.[1];
-                    if (currentData) {
-                        elements.loanDate.value = currentData.loanDate || "";
+                    if (currentData) {                       
                         elements.pledgeNumber.value = currentData.pledgeNumber || "";
-                        elements.cust_name.value = currentData.cust_name || "";
-                        elements.gl_weight.value = currentData.gl_weight || "";
-                        elements.amount.value = currentData.amount || "";
+                        elements.status.value = currentData.status || "";                        
                         elements.appraised.checked = currentData.appraised === "Yes";
                         elements.stock_remark.value = currentData.stock_remark || "";
                         stockForminput.setAttribute("data-edit-id", recordId);
                     }
+                     messageContainer.innerHTML =""
                 });
             });
-
-        } else {
+        } else {           
             tableReport.innerHTML = "<tr><td colspan='10'>No Records Found</td></tr>";
             reportCount.innerHTML = `<p>Verified Stock: <span>0</span></p>`;
             reportAmount.innerHTML = `<p>Verified Amount:<span> ₹0</span></p>`;
         }
-    });
-    const saveRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
-    onValue(saveRef, function(snapshot) {
-        if (snapshot.exists()) {
-            const infoData = snapshot.val();
-            reg_count.innerHTML = `<p>Stock As Register: <span>${parseFloat(infoData.gl_stock || 0).toLocaleString()}</span></p>`;
-            reg_amount.innerHTML = `<p>Ledger Amount: <span>₹${parseFloat(infoData.gl_os || 0).toLocaleString()}</span></p>`;
-        } else {
-            reg_count.innerHTML = "<p>Stock As Register: <span>0</span></p>";
-            reg_amount.innerHTML = "<p>Ledger Amount: <span>₹0</span></P>";
-        }
-    });
+    });    
 }
-// Submit stock form
+
+// Submit handler
 stockForminput.addEventListener("submit", function (e) {
     e.preventDefault();
     const dateKey = entryDatePicker.value;
+
     const infoRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
     onValue(infoRef, (snapshot) => {
         if (snapshot.exists() && snapshot.val().completed === true) {
-            alert("completed.");
+            alert("Entry already marked completed.");
             return;
         }
-        // Existing save/update 
-        const formData = {
-            loanDate: elements.loanDate.value,
+        const formData = {           
             pledgeNumber: elements.pledgeNumber.value,
-            cust_name: elements.cust_name.value,
-            gl_weight: elements.gl_weight.value,
-            amount: elements.amount.value,
+            status: elements.status.value,           
             appraised: elements.appraised.checked ? "Not Appraised" : "Appraised",
             stock_remark: elements.stock_remark.value,
             savedAt: new Date().toISOString()
         };
+
         const editId = stockForminput.getAttribute("data-edit-id");
         const baseRef = ref(database, `${auditornme}/${branchName}/stock/${dateKey}`);
 
         if (editId) {
-            update(ref(database, `${baseRef}/${editId}`), formData)
+            update(ref(database, `${auditornme}/${branchName}/stock/${dateKey}/${editId}`), formData)
                 .then(() => {
                     messageContainer.innerHTML = `<p class="success-message">Updated</p>`;
                     stockForminput.reset();
@@ -150,20 +165,12 @@ stockForminput.addEventListener("submit", function (e) {
                     console.error(error);
                 });
         } else {
-            push(baseRef, formData)
-                .then(() => {
-                    messageContainer.innerHTML = `<p class="success-message">Saved</p>`;
-                    stockForminput.reset();
-                })
-                .catch((error) => {
-                    messageContainer.innerHTML = `<p class="error-message">Save Failed</p>`;
-                    console.error(error);
-                });
+             messageContainer.innerHTML =`<p class="error-message">New entry not allowed.</p>`;
         }
     }, { onlyOnce: true });
 });
 
-// Scheme 
+// Scheme logic
 function getScheme(dateString) {
     const date = new Date(dateString);
     const gDate = new Date('2023-02-15');
@@ -172,28 +179,35 @@ function getScheme(dateString) {
     else if (date >= gDate && date < hDate) return 'H';
     else return 'I';
 }
-// Mark the current date entry as completed
+
+// Mark completed
 markCompleteBtn.addEventListener("click", () => {
     const dateKey = entryDatePicker.value;
     const infoRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
     update(infoRef, { completed: true })
         .then(() => {
             alert("Marked as completed.");
-            
-            // Optional: auto-switch to new day
+
             const newDate = new Date();
             newDate.setDate(newDate.getDate() + 1);
             const nextDay = newDate.toISOString().split("T")[0];
             entryDatePicker.value = nextDay;
-            loadStockData(nextDay);
+            checkDayCompleted(nextDay);
         })
         .catch((error) => {
             alert("Error marking completed.");
             console.error(error);
         });
 });
-// Load data on page load or date change
+
+// Initialize on load
+if (!entryDatePicker.value) {
+    const today = new Date().toISOString().split("T")[0];
+    entryDatePicker.value = today;
+}
+checkDayCompleted(entryDatePicker.value);
+
+// On date change
 entryDatePicker.addEventListener("change", () => {
     checkDayCompleted(entryDatePicker.value);
 });
-checkDayCompleted(entryDatePicker.value);

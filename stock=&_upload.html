@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/upload.css">
+    <link rel="shortcut icon" type="shortcuticon" href="image/log/audit.png">
+    <title>Audit report</title>
+</head>
+<body>    
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="status_head">            
+                    <h3>Chengannur Nidhi</h3> 
+                </div>
+
+                <div class="right_info">
+                    <div class="home_btn">           
+                        <button class="home_btn">
+                            <a id="dynamicHomeLink"><img src="image/nav/home-button.png" alt="">Home</a>
+                        </button>                    
+                    </div>
+                
+                    <div class="user_info" title="User">
+                        <img src="image/nav/user.png">
+                      <p name="userName" id="userName"></p>                     
+                      <input type="hidden" name="userName" id="hiddenUserName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="content-2">
+                <div class="form_container">
+                    <div class="title">
+                        <h2>Stock Data Upload </h2>                            
+                    </div> 
+                    <div class="inputform">
+                    <div class="input-box">
+                        <input type="hidden" id="upload_type" value="stock">
+                        
+                        <label for="upload">File</label>
+                        <input type="file" id="upload" accept=".xlsx, .xls" required/>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="date">Date</label>
+                        <input type="date" id="aud_date" required />
+                    </div>
+                                        
+                    <div class="input-box">
+                        <label for="branch">Branch</label>
+                        <select id="brName" required></select>
+                    </div>                
+                  
+                    <div class="input-box" id="appraisedByBox">
+                        <label for="Auditor">Auditor</label>
+                        <select id="Auditor" required></select>
+                    </div>
+                    
+                   <div class="btn-save-data">
+                    <button class="save" onclick="downloadJSON()">Download</button>
+                    <button class="clear" onclick="uploadToFirebase()">Upload</button>
+                </div>
+                </div>
+                </div>
+
+                <div class="report_container">
+                    <div class="title">
+                        <h2>Stock Data</h2> 
+                        <div id="messageContainer"></div>                        
+                    </div>  
+                    <div id="output"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+     <script type="module" src="js/upload.js"></script>
+     <script src="js/common.js"></script>
+</body>
+</html>

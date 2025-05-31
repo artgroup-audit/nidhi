@@ -74,7 +74,7 @@ const messageContainer = document.getElementById("messageContainer");
 
 const elementIDs = [
   "info_date", "brName", "brmgr", "stff1", "stff2", "staff_reg",
-  "gl_os", "gl_stock", "info_cash", "info_remark", "coin_count", "2000_count", "500_count", "200_count",
+  "gl_os", "gl_stock", "info_cash", "info_remark", "coin_count", "500_count", "200_count",
   "100_count", "50_count", "20_count", "10_count",
 ];
 const elements = {};

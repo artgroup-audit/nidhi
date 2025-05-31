@@ -46,14 +46,16 @@ const branchEL = document.querySelector("#brName");
 const dateEL = document.querySelector("#report_date");
 const tblBodyEl = document.querySelector("#report_tableBody");
 const displayBtn = document.querySelector(".display");
-const rowCountEl = document.getElementById("report_ConutTotal");
-const rowCount1El = document.getElementById("report-rowCountin");
-
 const auditorNameEl = document.querySelector("#Auditor")
 
+const reportCount = document.getElementById("report_ConutTotal");
 const reportAmount = document.getElementById("report-totalAmount");
-const reg_count = document.getElementById("stock_register")
-const reg_amount = document.getElementById("ledger")
+const reg_count = document.getElementById("stock_register");
+const reg_amount = document.getElementById("ledger");
+const reportverify = document.getElementById("report_verify")
+const notAppraised = document.getElementById("notppraise")
+
+
 
 const auditornme = localStorage.getItem('userName');
 const todayKey = new Date().toISOString().split("T")[0]; 
@@ -79,14 +81,23 @@ displayBtn.addEventListener("click", () => {
             let userArray = Object.entries(snapshot.val());
             tblBodyEl.innerHTML = "";
 
-            let totalAmount = 0;
+            let inStockCount = 0;
+            let closedCount = 0;
+            let forwardedCount = 0;
+            let notAppraisedCount = 0;
 
             userArray.forEach(([id, currentUserValue]) => {
                 const scheme = getScheme(currentUserValue.loanDate); 
                 
-                // Convert to number and add if valid
-                const amt = parseFloat(currentUserValue.amount);
-                if (!isNaN(amt)) totalAmount += amt;
+                // bottam report
+                const status = currentUserValue.status ? currentUserValue.status.trim() : "";
+                if (status === "In Stock") inStockCount++;
+                else if (status === "Closed") closedCount++;
+                else if (status === "Forwarded to HO") forwardedCount++;
+
+                const appraised = currentUserValue.appraised ? currentUserValue.appraised.trim() : "";
+                if (appraised === "Not Appraised") notAppraisedCount++;
+
                 tblBodyEl.innerHTML += `
                     <tr>
                     <td>${formatDate(currentUserValue.loanDate)}</td>
@@ -94,7 +105,8 @@ displayBtn.addEventListener("click", () => {
                     <td>${currentUserValue.pledgeNumber || "-"}</td>                    
                     <td>${currentUserValue.cust_name || "-"}</td>
                     <td>${currentUserValue.gl_weight || "-"}</td>
-                    <td>${currentUserValue.amount || "-"}</td>                   
+                    <td>${currentUserValue.amount || "-"}</td>
+                    <td>${currentUserValue.status || "-"}</td>                   
                     <td>${currentUserValue.appraised || "-"}</td>
                     <td>${currentUserValue.stock_remark || "-"}</td>   
                     
@@ -104,9 +116,15 @@ displayBtn.addEventListener("click", () => {
             });
 
             // Display row count
-            rowCountEl.innerText = `Verified Stock: ${userArray.length}`;   
-            reportAmount.innerHTML = `Verified Amount: ₹ ${totalAmount.toLocaleString()}`;        
-            rowCount1El.value = `${userArray.length}`;
+            const filteredArray = userArray.filter(([_, val]) => val.status && val.status.trim() !== ""); //total checkrd count
+
+            reportverify.innerHTML = `<p>Verified Stock:<span> ${filteredArray.length}</span></p>`;
+            reportCount.innerHTML = `<p>stock:<span> ${userArray.length}</span></p>`;
+
+            reportAmount.innerHTML = `<p>In Stock: <span>${inStockCount}</span></p>`;
+            reg_count.innerHTML = `<p>Closed: <span>${closedCount}</span></p>`;
+            reg_amount.innerHTML = `<p>Forwarded to HO: <span>${forwardedCount}</span></p>`;
+            notAppraised.innerHTML = `<p>Not-Appraised: <span>${notAppraisedCount}</span></p>`;
 
         } else {
             tblBodyEl.innerHTML = "<tr><td colspan='13'>No Records Found</td></tr>";
@@ -116,26 +134,4 @@ displayBtn.addEventListener("click", () => {
         }
     });
 
-
-const saveRef = ref(database,
-     `${userId === "2" ? selectedAuditor : auditornme}/${selectedBranch}/info/${formattedDate}`
-    );
-
-onValue(saveRef, function(snapshot) {
-    if (snapshot.exists()) {
-        const infoData = snapshot.val();
-
-        // Extract values from info path
-        const totalStock = parseFloat(infoData.gl_stock) || 0;
-        const totalLedger = parseFloat(infoData.gl_os) || 0;
-
-        // Display the values
-        reg_count.innerText = `Stock Register: ${totalStock.toLocaleString()}`;
-        reg_amount.innerText = `Ledger Amount: ₹ ${totalLedger.toLocaleString()}`;
-    } else {
-        // If no records found
-        reg_count.innerText = "Stock Register: 0";
-        reg_amount.innerText = "Ledger Amount: ₹ 0";
-    }
-});
 });
