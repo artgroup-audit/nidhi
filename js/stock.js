@@ -69,6 +69,12 @@ function loadStockData(dateKey) {
 
         if (snapshot.exists()) {
             const userArray = Object.entries(snapshot.val());
+            
+            userArray.sort((a, b) => {
+    const pledgeA = a[1].pledgeNumber ? a[1].pledgeNumber.toString().padStart(10, '0') : "";
+    const pledgeB = b[1].pledgeNumber ? b[1].pledgeNumber.toString().padStart(10, '0') : "";
+    return pledgeA.localeCompare(pledgeB); // Ascending. Use .reverse() for descending.
+});
 
             userArray.forEach(([id, currentUserValue]) => {
                 const scheme = getScheme(currentUserValue.loanDate);
