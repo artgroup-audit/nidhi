@@ -34,7 +34,8 @@ td {
  .content .content-2 .form_container {
     flex: 1;
     min-height: 90vh;
-    background: white;
+    width: 18%;
+    background: rgb(214, 214, 214);
     margin: 7px;
     padding: 18px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -42,7 +43,7 @@ td {
     flex-direction: column;
 }
 .report_container {
-    flex: 3;
+    flex: 5;
     min-height: 90vh;
     background: white;
     margin: 7px;
@@ -76,7 +77,6 @@ td {
     color: white;
     z-index: 1;
 }
-
 .table-container tbody tr:nth-child(even) {
     background: #8398be2f;
 }
@@ -100,36 +100,41 @@ td {
 .title h2 {
     font-size: 14px;    
 }
-.form-fields, 
-.main_form-fields {
+.form-fields {
+    display: block;
+    flex-direction: column;    
+    gap: 10px;
+    padding: 2px;    
+}
+.main_form-fields{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 8px;
-    padding: 7px;
-}
-.main_form-fields{
-    padding-top: 6px;
+    padding: 2px;
+    padding-top: 15px;
+    gap: 10px;
 }
 .main_form-fields .input-box {
-    width: 47%;   
+    width: 100% 
 }
 .content label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     color: #333;
     display: block;
     margin-bottom: 0px;
 }
+.input-box select,
 .input-box input,
 .input-box p{
     width: 100%;
     padding: 7px;
-    border: 1px solid #ccc;
+    border: 2px solid #adacac;
     border-radius: 5px;
-    font-size: 12px;
-    background: #e9e8e8;
+    font-size: 13px;
+    background: #fffefe;
     color: #333;
+    font-weight: 600;
 }
 .input-box p{
     font-weight: 600;
@@ -137,7 +142,7 @@ td {
     min-height: 35px;
 }
 .remark input{
-    width: 400%;
+    width: 108%;
     height: 100px;
 }
 .checkbox-box {
@@ -146,23 +151,21 @@ td {
     gap: 8px;
     margin-top: 16px;
 }
-
 .checkbox-box input[type="checkbox"] {
     width: 20px;
     height: 20px;
     accent-color: #0879ad; 
     cursor: pointer;
 }
-.save_btn{
-    opacity: 0.6;
+.save_btn{    
+    opacity: 0.0;
     pointer-events: none;
 }
-
 .btn-save-data {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
-    gap: 152px;
+    gap: 60px;
 }
 .btn-save-data button  { 
     color: white;
@@ -253,7 +256,22 @@ td {
     font-weight: 600;
     align-items: center;
 }
-
+.edit_btn1{
+    display: flex;
+    align-items: center;    
+    background-color: #02490e;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    color: white;
+    font-weight: 800;
+    padding: 9px;
+    height: 15px;
+}
+.edit_btn1:hover{
+    transform: scale(1.1)
+}
 
 
 @media screen and (max-width: 768px) {
