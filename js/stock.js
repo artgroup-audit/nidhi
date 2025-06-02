@@ -58,7 +58,7 @@ function checkDayCompleted(dateKey) {
 
 // Load stock data
 function loadStockData(dateKey) {
-    const stockRef = ref(database, `${auditornme}/${branchName}/stock/${dateKey}`);
+    const stockRef = ref(database, `${auditornme}/${branchName}/stock/2025-06-02`);
     onValue(stockRef, function(snapshot) {
         tableReport.innerHTML = "";
         
@@ -136,7 +136,7 @@ stockForminput.addEventListener("submit", function (e) {
     e.preventDefault();
     const dateKey = entryDatePicker.value;
 
-    const infoRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
+    const infoRef = ref(database, `${auditornme}/${branchName}/info/2025-06-02`);
     onValue(infoRef, (snapshot) => {
         if (snapshot.exists() && snapshot.val().completed === true) {
             alert("Entry already marked completed.");
