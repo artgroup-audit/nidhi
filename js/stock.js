@@ -20,7 +20,7 @@ const reportCount = document.getElementById("report_ConutTotal");
 const reportAmount = document.getElementById("report-totalAmount");
 const reg_count = document.getElementById("stock_register");
 const reg_amount = document.getElementById("ledger");
-const entryDatePicker = document.getElementById("entryDate");
+const entryDatePicker = document.getElementById("entryDatePicker");
 const markCompleteBtn = document.getElementById("markCompleteBtn");
 const reportverify = document.getElementById("report_verify")
 const notAppraised = document.getElementById("notppraise")
@@ -58,7 +58,7 @@ function checkDayCompleted(dateKey) {
 
 // Load stock data
 function loadStockData(dateKey) {
-    const stockRef = ref(database, `${auditornme}/${branchName}/stock/2025-06-02`);
+    const stockRef = ref(database, `${auditornme}/${branchName}/stock/${dateKey}`);
     onValue(stockRef, function(snapshot) {
         tableReport.innerHTML = "";
         
@@ -136,7 +136,7 @@ stockForminput.addEventListener("submit", function (e) {
     e.preventDefault();
     const dateKey = entryDatePicker.value;
 
-    const infoRef = ref(database, `${auditornme}/${branchName}/info/2025-06-02`);
+    const infoRef = ref(database, `${auditornme}/${branchName}/info/${dateKey}`);
     onValue(infoRef, (snapshot) => {
         if (snapshot.exists() && snapshot.val().completed === true) {
             alert("Entry already marked completed.");
