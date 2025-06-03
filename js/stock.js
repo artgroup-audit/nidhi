@@ -117,7 +117,15 @@ function loadStockData(dateKey) {
             document.querySelectorAll(".edit_btn1").forEach(button => {
                 button.addEventListener("click", function () {
                     const recordId = this.getAttribute("data-id");
-                    
+                    //   highlight 
+                    document.querySelectorAll("#tableBody tr").forEach(row => {
+                        row.classList.remove("highlight-row");
+                    });
+                    //  Highlight 
+                const row = this.closest("tr");
+                if (row) {
+                    row.classList.add("highlight-row");
+                }                    
                     const currentData = userArray.find(([key]) => key === recordId)?.[1];
                     if (currentData) {                       
                         elements.pledgeNumber.value = currentData.pledgeNumber || "";

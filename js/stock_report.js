@@ -79,6 +79,13 @@ displayBtn.addEventListener("click", () => {
     onValue(stockRef, function(snapshot) {
         if (snapshot.exists()) {
             let userArray = Object.entries(snapshot.val());
+
+             userArray.sort((a, b) => {
+                const pledgeA = a[1].pledgeNumber ? a[1].pledgeNumber.toString().padStart(10, '0') : "";
+                const pledgeB = b[1].pledgeNumber ? b[1].pledgeNumber.toString().padStart(10, '0') : "";
+                return pledgeA.localeCompare(pledgeB);
+            });
+
             tblBodyEl.innerHTML = "";
 
             let inStockCount = 0;
