@@ -295,3 +295,9 @@ td {
         width: 100%;
     }
 }
+.highlight-row {
+    color: #fa0404 !important; /* light green or any color you prefer */
+    transition: color 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+}
