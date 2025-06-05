@@ -107,7 +107,7 @@ displayBtn.addEventListener("click", () => {
 
                 tblBodyEl.innerHTML += `
                     <tr>
-                    <td>${formatDate(currentUserValue.loanDate)}</td>
+                    <td>${currentUserValue.loanDate}</td>
                     <td>${scheme}</td>
                     <td>${currentUserValue.pledgeNumber || "-"}</td>                    
                     <td>${currentUserValue.cust_name || "-"}</td>
