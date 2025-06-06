@@ -92,7 +92,7 @@ function loadStockData(dateKey) {
                     <tr>
                         <td style="width:10px;" ><button class="edit_btn1" data-id="${id}" data-date="${currentUserValue.loanDate}">←</button></td>
                         <td style="font-weight:600;">${currentUserValue.pledgeNumber || "-"}</td>  
-                        <td>${formatDate(currentUserValue.loanDate)}</td>
+                        <td>${currentUserValue.loanDate}</td>
                         <td>${scheme}</td>                                          
                         <td>${currentUserValue.cust_name || "-"}</td>
                         <td>${currentUserValue.gl_weight || "-"}</td>
